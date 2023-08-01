@@ -9,11 +9,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { resendEmail } from "../../services/user.service";
-import { useAppDispatch } from "../../utils/hooks";
-import { alertActions } from "../../store/alert-slice";
-import { errorMessageFromAxiosError } from "../../utils/helpers";
-import { authActions } from "../../store/auth-slice";
 
 interface ChangePasswordModalProps {
   open: boolean;
@@ -21,7 +16,7 @@ interface ChangePasswordModalProps {
 }
 
 const ChangePasswordModal = (props: ChangePasswordModalProps) => {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   const { open, onHandleClose } = props;
 

@@ -18,7 +18,7 @@ function App() {
       <Header />
       <Content>
         <Routes>
-          <Route path="/" element={<MainContent category="" />} />
+          <Route path="/" element={<MainContent /* category="" */ />} />
 
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />

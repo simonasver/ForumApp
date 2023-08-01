@@ -1,0 +1,47 @@
+services:
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    environment:
+      - spring.jpa.show-sql=true
+      - spring.jpa.hibernate.ddl-auto=update
+      - spring.jpa.properties.hibernate.format_sql=true
+      - spring.jpa.database=mysql
+      - spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+      - spring.datasource.url=jdbc:mysql://database:3307/forum
+      - spring.datasource.username=root
+      - spring.datasource.password=asdasd
+      - spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+      - spring.security.secretKey=A/IOIR8oI7YgpI/leGwv7PGBUQouxwHmKc5cxKV1Ju5IXTMkj8tf8kOekYnNk5XA
+      - spring.security.accessToken.validityInMinutes=5
+      - spring.security.refreshToken.validityInDays=7
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+    depends_on:
+      - database
+
+  database:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: asdasd
+      MYSQL_DATABASE: forum
+      MYSQL_USER: user
+      MYSQL_PASSWORD: asdasd
+    ports:
+      - "3307:3307"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

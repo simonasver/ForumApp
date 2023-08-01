@@ -39,9 +39,6 @@ const Header = () => {
 
   const user = useAppSelector((state) => state.auth.user);
 
-  const [currentProfilePictureUrl, setCurrentProfilePictureUrl] =
-    React.useState<string | null>(null);
-
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -75,9 +72,6 @@ const Header = () => {
     if (user) {
       if (user.profilePictureUrl) {
         const img = new Image();
-        img.onload = () => {
-          setCurrentProfilePictureUrl(user.profilePictureUrl);
-        };
         img.onerror = () => {
           getImage(user.profilePictureId, abortController.signal)
             .then((res) => {
@@ -86,7 +80,6 @@ const Header = () => {
               });
               const imageUrl = URL.createObjectURL(blob);
               dispatch(authActions.changeProfilePictureUrl(imageUrl));
-              setCurrentProfilePictureUrl(imageUrl);
             })
             .catch((e) => {
               dispatch(

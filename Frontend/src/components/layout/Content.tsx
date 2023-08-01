@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 
 interface ContentProps {
   children: React.ReactNode;
