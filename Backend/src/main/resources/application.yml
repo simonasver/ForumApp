@@ -1,0 +1,40 @@
+spring:
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        properties:
+          hibernate:
+              format_sql: true
+        database: mysql
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+    datasource:
+        url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/forum
+        username: root
+        password: asdasd
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: forummod111@gmail.com
+        password: wfsddxbowhxxszwy
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                    ssl:
+                        enable: true
+    security:
+        secretKey: A/IOIR8oI7YgpI/leGwv7PGBUQouxwHmKc5cxKV1Ju5IXTMkj8tf8kOekYnNk5XA
+        accessToken:
+            validityInMinutes: 5
+        refreshToken:
+            validityInDays: 7
+logging:
+    level:
+        com.forum.backend.controller: DEBUG
+        org:
+            springframework:
+                web: DEBUG
