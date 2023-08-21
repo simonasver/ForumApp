@@ -10,7 +10,11 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../utils/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useEffectOnce,
+} from "../../utils/hooks";
 import { useNavigate } from "react-router-dom";
 import { getProfile, uploadProfilePicture } from "../../services/user.service";
 import { authActions } from "../../store/auth-slice";
@@ -44,7 +48,7 @@ const Profile = () => {
 
   const [selectedImage, setSelectedImage] = React.useState<File | null>(null);
 
-  React.useEffect(() => {
+  useEffectOnce(() => {
     const abortController = new AbortController();
     if (!user) {
       return navigate("/", { replace: true });
@@ -94,8 +98,7 @@ const Profile = () => {
         .finally(() => setIsLoading(false));
     }
     return () => abortController.abort();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   const onChangePictureHandler = () => {
     if (selectedImage) {

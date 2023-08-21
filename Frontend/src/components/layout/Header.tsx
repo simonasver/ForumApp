@@ -15,11 +15,15 @@ import {
 import DescriptionIcon from "@mui/icons-material/Description";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../utils/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useEffectOnce,
+} from "../../utils/hooks";
 import { authActions } from "../../store/auth-slice";
 import { getImage } from "../../services/image.service";
 import { alertActions } from "../../store/alert-slice";
-import { errorMessageFromAxiosError } from "../../utils/helpers";
+import { errorMessageFromAxiosError, isAdmin } from "../../utils/helpers";
 
 const title = "Forum";
 
@@ -29,6 +33,7 @@ const navButtons: { title: string; url: string; logged: boolean }[] = [
 
 const profileButtons: { title: string; url: string; admin: boolean }[] = [
   { title: "Profile", url: "/profile", admin: false },
+  { title: "Admin control panel", url: "/admin", admin: true },
   { title: "Logout", url: "/logout", admin: false },
 ];
 
@@ -67,7 +72,7 @@ const Header = () => {
     handleCloseUserMenu();
   };
 
-  React.useEffect(() => {
+  useEffectOnce(() => {
     const abortController = new AbortController();
     if (user) {
       if (user.profilePictureUrl) {
@@ -94,7 +99,7 @@ const Header = () => {
       }
     }
     return () => abortController.abort();
-  }, []);
+  });
 
   return (
     <AppBar
@@ -225,14 +230,18 @@ const Header = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {profileButtons.map((item) => (
-                  <MenuItem
-                    key={item.title}
-                    onClick={() => onHandleUserMenuPress(item.url)}
-                  >
-                    <Typography textAlign="center">{item.title}</Typography>
-                  </MenuItem>
-                ))}
+                {profileButtons.map((item) => {
+                  if (item.admin && !isAdmin(user)) return;
+                  else
+                    return (
+                      <MenuItem
+                        key={item.title}
+                        onClick={() => onHandleUserMenuPress(item.url)}
+                      >
+                        <Typography textAlign="center">{item.title}</Typography>
+                      </MenuItem>
+                    );
+                })}
               </Menu>
             </Box>
           )}

@@ -17,6 +17,23 @@ export interface User {
 }
 
 export enum UserRole {
-  User = "User",
-  Admin = "Admin",
+  User = "USER",
+  Admin = "ADMIN",
+}
+
+export interface PaginatedResponse<T> {
+  content: T[];
+  totalPages: number;
+  totalElements: number;
+  number: number;
+  size: number;
+}
+
+export interface Category {
+  id: string;
+  orderIndex: number;
+  title: string;
+  createdBy: User;
+  createDate: string;
+  lastEditDate: string;
 }

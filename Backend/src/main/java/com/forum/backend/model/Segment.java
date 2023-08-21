@@ -14,8 +14,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "segments")
+public class Segment {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -25,6 +25,4 @@ public class Category {
     private User createdBy;
     private Date createDate;
     private Date lastEditDate;
-    @ManyToOne
-    private Segment segment;
 }

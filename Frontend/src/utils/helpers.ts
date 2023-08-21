@@ -1,4 +1,5 @@
 import axios from "axios";
+import { User, UserRole } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function errorMessageFromAxiosError(e: any): string {
@@ -27,4 +28,9 @@ export function errorMessageFromAxiosError(e: any): string {
   } else {
     return "";
   }
+}
+
+export function isAdmin(user: User | undefined): boolean {
+  if (user === undefined) return false;
+  return user.role === UserRole.Admin;
 }

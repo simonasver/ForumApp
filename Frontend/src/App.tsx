@@ -10,6 +10,8 @@ import RegisterForm from "./components/auth/RegisterForm";
 import NotificationSnackbar from "./components/layout/NotificationSnackbar";
 import LogoutPage from "./pages/LogoutPage";
 import Profile from "./components/profile/Profile";
+import AdminControlPanel from "./components/admin/AdminControlPanel";
+import AdminCategories from "./components/admin/AdminCategories";
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
           <Route path="/logout" element={<LogoutPage />} />
 
           <Route path="/profile" element={<Profile />} />
+
+          <Route path="/admin" element={<AdminControlPanel />} />
+          <Route path="/admincategory" element={<AdminCategories />} />
 
           <Route path="createPost" element={<TextEditor />} />
         </Routes>

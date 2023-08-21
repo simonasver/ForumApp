@@ -23,7 +23,7 @@ const NotificationSnackbar = () => {
       open={!!alertData.type && !!alertData.message}
       TransitionComponent={TransitionUp}
       onClose={() =>
-        dispatch(alertActions.clearAlert())
+        setTimeout(() => dispatch(alertActions.clearAlert()), 5000)
       }
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       autoHideDuration={5000}

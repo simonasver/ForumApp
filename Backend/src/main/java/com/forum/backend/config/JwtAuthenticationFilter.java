@@ -64,7 +64,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 response.getWriter().write("Not authenticated");
             } catch (Exception ex) {
-                log.error("JWT token exception");
+                log.error("JWT token exception " + ex.getClass().toString());
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                 response.getWriter().write("Access denied");
             }
