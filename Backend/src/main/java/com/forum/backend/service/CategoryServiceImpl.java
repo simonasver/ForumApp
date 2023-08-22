@@ -1,6 +1,7 @@
 package com.forum.backend.service;
 
 import com.forum.backend.dto.category.AddCategoryRequest;
+import com.forum.backend.dto.category.ChangeCategoryNameRequest;
 import com.forum.backend.dto.category.ReorderCategoriesRequest;
 import com.forum.backend.exception.CustomException;
 import com.forum.backend.model.Category;
@@ -65,5 +66,41 @@ public class CategoryServiceImpl implements CategoryService {
                 categoryRepository.save(category);
             }
         }
+    }
+
+    public Category updateCategoryName(UUID categoryId, ChangeCategoryNameRequest request) {
+        var user = authenticationService.getCurrentlyAuthenticatedUser();
+        if(user == null || user.getRole() != UserRole.ADMIN) {
+            throw new CustomException("Access denied", HttpStatus.FORBIDDEN);
+        }
+
+        var categoryOptional = categoryRepository.findById(categoryId);
+
+        if(categoryOptional.isEmpty()) {
+            throw new CustomException("Category not found", HttpStatus.BAD_REQUEST);
+        }
+
+        var category = categoryOptional.get();
+
+        category.setTitle(request.getNewTitle());
+        category.setLastEditDate(new Date(System.currentTimeMillis()));
+        return categoryRepository.save(category);
+    }
+
+    public void deleteCategory(UUID categoryId) {
+        var user = authenticationService.getCurrentlyAuthenticatedUser();
+        if(user == null || user.getRole() != UserRole.ADMIN) {
+            throw new CustomException("Access denied", HttpStatus.FORBIDDEN);
+        }
+
+        var categoryOptional = categoryRepository.findById(categoryId);
+
+        if(categoryOptional.isEmpty()) {
+            throw new CustomException("Category not found", HttpStatus.BAD_REQUEST);
+        }
+
+        var category = categoryOptional.get();
+
+        categoryRepository.delete(category);
     }
 }

@@ -4,10 +4,10 @@ interface CategoryProps {
   title: string;
 }
 
-const Category = (props: CategoryProps) => {
+const CategoryBar = (props: CategoryProps) => {
   const { title } = props;
 
   return <Typography>Category: {title}</Typography>;
 };
 
-export default Category;
+export default CategoryBar;

@@ -30,3 +30,15 @@ export const reorderCategories = async (numbers: {
   });
   return res.data;
 };
+
+export const renameCategory = async (categoryId: string, newTitle: string) => {
+  const res = await api.put(`/category/${categoryId}/title`, {
+    newTitle: newTitle,
+  });
+  return res.data;
+};
+
+export const deleteCategory = async (categoryId: string) => {
+  const res = await api.delete(`/category/${categoryId}`);
+  return res.data;
+};

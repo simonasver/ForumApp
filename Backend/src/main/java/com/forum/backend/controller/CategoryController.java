@@ -1,6 +1,7 @@
 package com.forum.backend.controller;
 
 import com.forum.backend.dto.category.AddCategoryRequest;
+import com.forum.backend.dto.category.ChangeCategoryNameRequest;
 import com.forum.backend.dto.category.ReorderCategoriesRequest;
 import com.forum.backend.dto.common.PaginationRequest;
 import com.forum.backend.model.Category;
@@ -39,5 +40,16 @@ public class CategoryController {
     @PutMapping("/order")
     public void reorderCategories(@Valid @RequestBody ReorderCategoriesRequest request) {
         categoryService.reorderCategories(request);
+    }
+
+    @PutMapping("/{categoryId}/title")
+    public ResponseEntity<Category> changeCategoryName(@PathVariable UUID categoryId, @Valid @RequestBody ChangeCategoryNameRequest request) {
+        return ResponseEntity.ok(categoryService.updateCategoryName(categoryId, request));
+    }
+
+    @DeleteMapping("/{categoryId}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable UUID categoryId) {
+        categoryService.deleteCategory(categoryId);
+        return ResponseEntity.noContent().build();
     }
 }

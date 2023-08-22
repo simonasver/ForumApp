@@ -1,27 +1,7 @@
-import React from "react";
-import {
-  Paper,
-  Typography,
-  Skeleton,
-  Button,
-  Pagination,
-  Stack,
-} from "@mui/material";
-import {
-  useAppDispatch,
-  useAppSelector,
-  useEffectOnce,
-} from "../../utils/hooks";
+import { Paper, Typography, Button, Stack } from "@mui/material";
+import { useAppSelector, useEffectOnce } from "../../utils/hooks";
 import { useNavigate } from "react-router-dom";
-import { errorMessageFromAxiosError, isAdmin } from "../../utils/helpers";
-import AddCategoryModal from "./AddCategoryModal";
-import { getCategories } from "../../services/category.service";
-import { alertActions } from "../../store/alert-slice";
-
-enum Modal {
-  None = 0,
-  AddCategory = 1,
-}
+import { isAdmin } from "../../utils/helpers";
 
 const AdminControlPanel = () => {
   const navigate = useNavigate();
@@ -57,9 +37,6 @@ const AdminControlPanel = () => {
         <br />
         <Stack direction={"row"} justifyContent={"space-around"}>
           <Button variant="outlined">Users</Button>
-          <Button variant="outlined" onClick={() => navigate("/adminsegment")}>
-            Segments
-          </Button>
           <Button variant="outlined" onClick={() => navigate("/admincategory")}>
             Categories
           </Button>

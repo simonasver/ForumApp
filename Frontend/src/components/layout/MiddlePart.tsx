@@ -1,10 +1,10 @@
 import { Paper } from "@mui/material";
-import Segments from "../category/Segments";
+import Categories from "../category/Categories";
 
 const MiddlePart = () => {
   return (
     <Paper sx={{ width: "100%", minHeight: "700px", backgroundColor: "white" }}>
-      <Segments />
+      <Categories />
     </Paper>
   );
 };

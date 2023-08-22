@@ -25,6 +25,4 @@ public class Category {
     private User createdBy;
     private Date createDate;
     private Date lastEditDate;
-    @ManyToOne
-    private Segment segment;
 }
