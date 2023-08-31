@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CategoryBar from "./CategoryBar";
 import { Category } from "../../utils/types";
 import { useAppDispatch, useEffectOnce } from "../../utils/hooks";
@@ -34,11 +34,23 @@ const Categories = () => {
   });
 
   return (
-    <Paper sx={{ paddingY: "10px", marginBottom: "10px" }}>
+    <Box sx={{ paddingY: "10px", marginBottom: "10px" }}>
+      <Typography
+        variant="h6"
+        fontWeight={"bold"}
+        paddingBottom={"5px"}
+        borderBottom={"1px solid grey"}
+      >
+        Categories
+      </Typography>
       {categories.map((category) => (
-        <CategoryBar key={category.id} title={category.title} />
+        <CategoryBar
+          key={category.id}
+          id={category.id}
+          title={category.title}
+        />
       ))}
-    </Paper>
+    </Box>
   );
 };
 

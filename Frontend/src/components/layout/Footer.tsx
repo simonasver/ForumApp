@@ -6,7 +6,7 @@ const Footer = () => {
       sx={{
         backgroundColor: "inherit",
         width: "100%",
-        paddingX: { xs: "30px", md: "100px" },
+        paddingX: { xs: "30px", md: "200px" },
         boxSizing: "border-box",
       }}
       elevation={0}

@@ -11,6 +11,7 @@ import {
   TableRow,
   TableCell,
   IconButton,
+  Box,
 } from "@mui/material";
 import AddCategoryModal from "./AddCategoryModal";
 import { useNavigate } from "react-router-dom";
@@ -264,8 +265,7 @@ const AdminCategories = () => {
           boxSizing: "border-box",
         }}
       >
-        <Paper
-          elevation={0}
+        <Box
           sx={{
             backgroundColor: "inherit",
             width: "100%",
@@ -378,7 +378,7 @@ const AdminCategories = () => {
             <br />
             <br />
           </>
-        </Paper>
+        </Box>
       </Paper>
       {modalStatus == Modal.AddCategory && (
         <AddCategoryModal

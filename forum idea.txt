@@ -1,0 +1,13 @@
+dinamically create roles, dinamically change role permissions
+
+TO-DO:
+• Ability to change profile picture
+• E-Mail confirmation
+• Creating topics
+• Creating replies
+• Reacting to posts
+• Creating categories
+• Reorganizing categories
+• Creating roles
+• Customizing role permissions
+• Customizing reactions

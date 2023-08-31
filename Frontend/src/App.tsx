@@ -20,7 +20,8 @@ function App() {
       <Header />
       <Content>
         <Routes>
-          <Route path="/" element={<MainContent /* category="" */ />} />
+          <Route path="/" element={<MainContent />} />
+          <Route path="/category/:categoryId" element={<MainContent />} />
 
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
@@ -31,7 +32,7 @@ function App() {
           <Route path="/admin" element={<AdminControlPanel />} />
           <Route path="/admincategory" element={<AdminCategories />} />
 
-          <Route path="createPost" element={<TextEditor />} />
+          <Route path="/createPost" element={<TextEditor />} />
         </Routes>
       </Content>
       <Footer />

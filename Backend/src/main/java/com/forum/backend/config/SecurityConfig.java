@@ -32,6 +32,7 @@ public class SecurityConfig {
         NonAuthenticatedUrls = new HashMap<>();
         NonAuthenticatedUrls.put("/api/token/", List.of("POST", "PUT", "DELETE"));
         NonAuthenticatedUrls.put("/api/user/", List.of("POST"));
+        NonAuthenticatedUrls.put("/api/category/", List.of("GET"));
     }
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;

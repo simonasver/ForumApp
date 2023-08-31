@@ -13,7 +13,7 @@ const Content = (props: ContentProps) => {
       sx={{
         width: "100%",
         backgroundColor: "inherit",
-        paddingX: { xs: "30px", md: "100px" },
+        paddingX: { xs: "30px", md: "200px" },
         paddingY: "30px",
         boxSizing: "border-box",
       }}

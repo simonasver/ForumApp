@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -25,4 +26,6 @@ public class Category {
     private User createdBy;
     private Date createDate;
     private Date lastEditDate;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Topic> topics;
 }

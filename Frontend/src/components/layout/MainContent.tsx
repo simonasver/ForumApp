@@ -2,11 +2,7 @@ import { Grid } from "@mui/material";
 import MiddlePart from "./MiddlePart";
 import SidePart from "./SidePart";
 
-// interface ContentProps {
-//   category: string | undefined;
-// }
-
-const MainContent = (/* props: ContentProps */) => {
+const MainContent = () => {
   return (
     <Grid container direction={"row"} justifyContent={"center"}>
       <Grid

@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   Container,
+  Grid,
   IconButton,
   Menu,
   MenuItem,
@@ -209,10 +210,28 @@ const Header = () => {
 
           {user && (
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt={user?.username} src={user?.profilePictureUrl} />
-                </IconButton>
+              <Tooltip
+                title="Open settings"
+                onClick={handleOpenUserMenu}
+                sx={{ cursor: "pointer" }}
+              >
+                <Grid container direction="row" alignItems={"center"}>
+                  <Grid item>
+                    <Avatar
+                      alt={user?.username}
+                      src={user?.profilePictureUrl}
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    sx={{
+                      display: { xs: "none", md: "inherit" },
+                      paddingLeft: "10px",
+                    }}
+                  >
+                    <Typography fontWeight={"bold"}>{user.username}</Typography>
+                  </Grid>
+                </Grid>
               </Tooltip>
               <Menu
                 sx={{ mt: "45px" }}

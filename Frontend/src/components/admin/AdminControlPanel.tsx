@@ -1,4 +1,4 @@
-import { Paper, Typography, Button, Stack } from "@mui/material";
+import { Paper, Typography, Button, Stack, Box } from "@mui/material";
 import { useAppSelector, useEffectOnce } from "../../utils/hooks";
 import { useNavigate } from "react-router-dom";
 import { isAdmin } from "../../utils/helpers";
@@ -25,8 +25,7 @@ const AdminControlPanel = () => {
         boxSizing: "border-box",
       }}
     >
-      <Paper
-        elevation={0}
+      <Box
         sx={{
           backgroundColor: "inherit",
           width: "400px",
@@ -42,7 +41,7 @@ const AdminControlPanel = () => {
           </Button>
           <Button variant="outlined">Roles</Button>
         </Stack>
-      </Paper>
+      </Box>
     </Paper>
   );
 };
